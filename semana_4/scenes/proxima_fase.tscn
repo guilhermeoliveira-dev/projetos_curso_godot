@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://clyear2sdp3kb"]
+
+[ext_resource type="Script" uid="uid://cpkwmqbknfdoo" path="res://scripts/proxima_fase.gd" id="1_27sr8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gsr7l"]
+size = Vector2(16, 16)
+
+[node name="ProximaFase" type="Area2D" unique_id=1512521568 groups=["fim_de_fase"]]
+script = ExtResource("1_27sr8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1714094393]
+shape = SubResource("RectangleShape2D_gsr7l")

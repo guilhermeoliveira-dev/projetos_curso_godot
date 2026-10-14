@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://sxvt0keyav0s"]
+
+[ext_resource type="Script" uid="uid://cbdopy2ybv18t" path="res://scripts/botao.gd" id="1_epre6"]
+[ext_resource type="Texture2D" uid="uid://bnid2uxqp6xyg" path="res://sprites/botao.png" id="1_y0pxc"]
+[ext_resource type="AudioStream" uid="uid://mnq4p12iarx3" path="res://sounds/som_botao.mp3" id="3_tob5m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gsr7l"]
+
+[sub_resource type="Animation" id="Animation_epre6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_tob5m"]
+resource_name = "ativar"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 2]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_tob5m")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0gfik"]
+_data = {
+&"RESET": SubResource("Animation_epre6"),
+&"ativar": SubResource("Animation_tob5m")
+}
+
+[node name="Botao" type="Area2D" unique_id=585721131 groups=["botao"]]
+z_index = -5
+script = ExtResource("1_epre6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1749956795]
+shape = SubResource("RectangleShape2D_gsr7l")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=411020271]
+texture = ExtResource("1_y0pxc")
+hframes = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1054251476]
+libraries/ = SubResource("AnimationLibrary_0gfik")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=985449162]
