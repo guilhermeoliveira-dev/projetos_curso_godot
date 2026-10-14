@@ -1,0 +1,72 @@
+extends Node2D
+
+@export var max_health: int = 200
+var current_health: int
+
+var health_bar: TextureProgressBar = null
+
+func _ready() -> void:
+	current_health = max_health
+	_find_health_bar()
+	_update_ui()
+
+func _find_health_bar() -> void:
+	var scene_root = get_tree().current_scene
+	if scene_root:
+		health_bar = scene_root.find_child("HealthBar", true, false) as TextureProgressBar
+
+func take_damage(amount: int) -> void:
+	current_health -= amount
+	current_health = max(current_health, 0)
+	_update_ui()
+	
+	if current_health <= 0:
+		game_over()
+
+func _update_ui() -> void:
+	if not health_bar:
+		_find_health_bar()
+		
+	if health_bar:
+		health_bar.max_value = max_health
+		health_bar.value = current_health
+
+func game_over() -> void:
+	var game_scene = get_tree().current_scene
+	
+	if not game_scene or not game_scene.has_method("_game_over"):
+		var parent = get_parent()
+		while parent != null:
+			if parent.has_method("_game_over"):
+				game_scene = parent
+				break
+			parent = parent.get_parent()
+
+	if game_scene and game_scene.has_method("_game_over"):
+		game_scene._game_over()
+
+func _on_base_end_area_body_entered(body: Node2D) -> void:
+	_handle_enemy_damage(body)
+
+func _on_base_end_area_area_entered(area: Area2D) -> void:
+	_handle_enemy_damage(area)
+
+func _handle_enemy_damage(incoming_node: Node) -> void:
+	var enemy_resource: EnemyResource = null
+	var node_to_free: Node = incoming_node
+
+	if "enemy_resource" in incoming_node and incoming_node.enemy_resource:
+		enemy_resource = incoming_node.enemy_resource
+	elif incoming_node.get_parent() and "enemy_resource" in incoming_node.get_parent():
+		enemy_resource = incoming_node.get_parent().enemy_resource
+		node_to_free = incoming_node.get_parent()
+
+	if enemy_resource:
+		print("Dano aplicado à base: ", enemy_resource.base_dmg)
+		take_damage(enemy_resource.base_dmg)
+		
+		var game_scene = get_tree().current_scene
+		if game_scene and game_scene.has_method("on_enemy_removed"):
+			game_scene.on_enemy_removed()
+			
+		node_to_free.queue_free()

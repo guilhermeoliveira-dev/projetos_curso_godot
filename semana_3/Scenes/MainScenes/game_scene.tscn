@@ -1,0 +1,225 @@
+[gd_scene format=3 uid="uid://cr38klqxqpcei"]
+
+[ext_resource type="Script" uid="uid://d3f4imsrfyyr8" path="res://Scenes/MainScenes/game_scene.gd" id="1_2u2le"]
+[ext_resource type="PackedScene" uid="uid://bnm3i13dfm2bu" path="res://Scenes/Maps/Map1.tscn" id="1_akvmk"]
+[ext_resource type="Texture2D" uid="uid://d07uoyycbfkbl" path="res://Assets/UI/Buttons/button_square_depth_flat.png" id="2_3x1ga"]
+[ext_resource type="Resource" uid="uid://dive7cwu8rmtw" path="res://Resources/Data/Maps/Map1.tres" id="2_sl8sw"]
+[ext_resource type="Texture2D" uid="uid://bovoblaoptslx" path="res://Assets/Towers/towerDefense_tile249.png" id="3_2u2le"]
+[ext_resource type="Script" uid="uid://goxc7ieuxtlm" path="res://Scenes/MainScenes/ui.gd" id="3_g2kuy"]
+[ext_resource type="Texture2D" uid="uid://cgoghipov7klx" path="res://Assets/Towers/towerDefense_tile251.png" id="4_g2kuy"]
+[ext_resource type="Texture2D" uid="uid://u875q7x7j7hx" path="res://Assets/Icons/right.png" id="7_2usgn"]
+[ext_resource type="Texture2D" uid="uid://cwpht0niq7vjf" path="res://Assets/Icons/pause.png" id="8_674w2"]
+[ext_resource type="Texture2D" uid="uid://dvx1c0tsfy1aj" path="res://Assets/Icons/fastForward.png" id="9_674w2"]
+[ext_resource type="FontFile" uid="uid://05gtyksl7hy" path="res://Assets/Fonts/Kenney Future Narrow.ttf" id="10_0h1f8"]
+[ext_resource type="PackedScene" uid="uid://dx45fuhh6t1ot" path="res://Scenes/UIScenes/upgrade_panel.tscn" id="10_a0jnf"]
+[ext_resource type="Texture2D" uid="uid://b5r4f525d8c7g" path="res://Assets/UI/HPbar.jpg" id="11_sl8sw"]
+[ext_resource type="Texture2D" uid="uid://cip80f530567l" path="res://Assets/Icons/home.png" id="12_jvyjn"]
+
+[node name="GameScene" type="Node2D" unique_id=1819468004]
+script = ExtResource("1_2u2le")
+map_resource = ExtResource("2_sl8sw")
+
+[node name="Map1" parent="." unique_id=2065031549 instance=ExtResource("1_akvmk")]
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=228710708]
+script = ExtResource("3_g2kuy")
+
+[node name="HUD" type="Control" parent="UI" unique_id=1807144647]
+layout_mode = 3
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+grow_vertical = 2
+
+[node name="BuildBar" type="VBoxContainer" parent="UI/HUD" unique_id=1823987231]
+custom_minimum_size = Vector2(100, 400)
+layout_mode = 1
+offset_left = 18.0
+offset_top = 32.0
+offset_right = 118.0
+offset_bottom = 432.0
+theme_override_constants/separation = 25
+
+[node name="Gun" type="TextureButton" parent="UI/HUD/BuildBar" unique_id=1265533542 groups=["build_buttons"]]
+custom_minimum_size = Vector2(100, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("2_3x1ga")
+stretch_mode = 0
+
+[node name="Icon" type="TextureRect" parent="UI/HUD/BuildBar/Gun" unique_id=1030897479]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_2u2le")
+
+[node name="Label" type="Label" parent="UI/HUD/BuildBar/Gun" unique_id=353696920]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 50.0
+offset_right = 65.0
+offset_bottom = 75.0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("10_0h1f8")
+theme_override_font_sizes/font_size = 20
+text = "$100"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Missile" type="TextureButton" parent="UI/HUD/BuildBar" unique_id=743100532 groups=["build_buttons"]]
+custom_minimum_size = Vector2(100, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("2_3x1ga")
+stretch_mode = 0
+
+[node name="Icon" type="TextureRect" parent="UI/HUD/BuildBar/Missile" unique_id=1963386866]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_g2kuy")
+
+[node name="Label" type="Label" parent="UI/HUD/BuildBar/Missile" unique_id=1140839515]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 50.0
+offset_right = 65.0
+offset_bottom = 75.0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("10_0h1f8")
+theme_override_font_sizes/font_size = 20
+text = "$100"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="GameControls" type="HBoxContainer" parent="UI/HUD" unique_id=468873405]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 1100.0
+offset_top = 300.0
+offset_right = 1204.0
+offset_bottom = 350.0
+grow_horizontal = 2
+theme_override_constants/separation = 10
+
+[node name="PausePlay" type="TextureButton" parent="UI/HUD/GameControls" unique_id=667730130]
+process_mode = 3
+custom_maximum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+toggle_mode = true
+button_pressed = true
+texture_normal = ExtResource("7_2usgn")
+texture_pressed = ExtResource("8_674w2")
+stretch_mode = 0
+
+[node name="SpeedUp" type="TextureButton" parent="UI/HUD/GameControls" unique_id=1230539607]
+custom_maximum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("9_674w2")
+stretch_mode = 0
+
+[node name="InfoBar" type="ColorRect" parent="UI/HUD" unique_id=1713436137]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 1
+offset_top = -360.0
+offset_right = 1280.0
+offset_bottom = -300.0
+color = Color(0, 0, 0, 0.47058824)
+
+[node name="Symbol" type="Label" parent="UI/HUD/InfoBar" unique_id=1041458536]
+custom_minimum_size = Vector2(120, 60)
+layout_mode = 0
+offset_left = 223.0
+offset_right = 343.0
+offset_bottom = 60.0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("10_0h1f8")
+theme_override_font_sizes/font_size = 50
+text = "$"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Money" type="Label" parent="UI/HUD/InfoBar" unique_id=1043484713]
+custom_minimum_size = Vector2(240, 60)
+layout_mode = 0
+offset_left = 223.0
+offset_right = 463.0
+offset_bottom = 60.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.47058824)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("10_0h1f8")
+theme_override_font_sizes/font_size = 50
+text = "100"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="HealthBar" type="TextureProgressBar" parent="UI/HUD/InfoBar" unique_id=1407990533]
+layout_mode = 0
+offset_left = 800.0
+offset_top = 6.0
+offset_right = 1200.0
+offset_bottom = 53.0
+nine_patch_stretch = true
+texture_under = ExtResource("11_sl8sw")
+texture_progress = ExtResource("11_sl8sw")
+tint_under = Color(0.20784314, 0.20784314, 0.20784314, 1)
+tint_progress = Color(0, 1, 0, 1)
+
+[node name="Base" type="TextureRect" parent="UI/HUD/InfoBar" unique_id=1996829690]
+layout_mode = 0
+offset_left = 730.0
+offset_top = 1.0
+offset_right = 852.0
+offset_bottom = 123.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("12_jvyjn")
+
+[node name="Wave" type="Label" parent="UI/HUD/InfoBar" unique_id=1127452903]
+custom_minimum_size = Vector2(150, 60)
+layout_mode = 0
+offset_left = 30.0
+offset_right = 180.0
+offset_bottom = 60.0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("10_0h1f8")
+theme_override_font_sizes/font_size = 50
+text = "Wave"
+
+[node name="NumberWave" type="Label" parent="UI/HUD/InfoBar" unique_id=513462882]
+custom_minimum_size = Vector2(100, 60)
+layout_mode = 0
+offset_left = 150.0
+offset_right = 250.0
+offset_bottom = 60.0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("10_0h1f8")
+theme_override_font_sizes/font_size = 50
+text = "1"
+horizontal_alignment = 1
+
+[node name="UpgradePanel" parent="." unique_id=2098660431 instance=ExtResource("10_a0jnf")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 729.0
+offset_top = 386.0
+offset_right = 729.0
+offset_bottom = 386.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[connection signal="pressed" from="UI/HUD/GameControls/PausePlay" to="UI" method="_on_pause_play_pressed"]
+[connection signal="pressed" from="UI/HUD/GameControls/SpeedUp" to="UI" method="_on_speed_up_pressed"]
