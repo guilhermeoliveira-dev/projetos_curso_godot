@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://cwhnbctgyf520"]
+
+[ext_resource type="Texture2D" uid="uid://blwabn4y4vw2n" path="res://sprites/luz.webp" id="1_ku1lu"]
+[ext_resource type="Texture2D" uid="uid://gp6f7iugfhqa" path="res://sprites/trovao.png" id="2_lilcm"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mx1e6"]
+particle_flag_disable_z = true
+initial_velocity_min = 90.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_gsr7l"]
+blend_mode = 1
+
+[node name="PointLight2D" type="PointLight2D" unique_id=541301935]
+scale = Vector2(0.25, 0.25)
+color = Color(0.5686275, 0.9411765, 1, 1)
+energy = 0.8
+shadow_enabled = true
+texture = ExtResource("1_ku1lu")
+texture_scale = 2.0
+height = 100.0
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=150127787]
+amount = 10
+texture = ExtResource("2_lilcm")
+trail_enabled = true
+trail_lifetime = 0.5
+process_material = SubResource("ParticleProcessMaterial_mx1e6")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=336413106]
+modulate = Color(0.5686275, 0.9411765, 1, 1)
+material = SubResource("CanvasItemMaterial_gsr7l")
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_ku1lu")

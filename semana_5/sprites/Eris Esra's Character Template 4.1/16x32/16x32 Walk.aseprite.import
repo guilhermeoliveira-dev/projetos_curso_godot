@@ -1,0 +1,21 @@
+[remap]
+
+importer="aseprite_wizard.plugin.static-texture"
+type="PortableCompressedTexture2D"
+uid="uid://c2kypege6sf1p"
+path="res://.godot/imported/16x32 Walk.aseprite-9b318058f5440ce335e60bcf4d497b94.res"
+
+[deps]
+
+source_file="res://sprites/Eris Esra's Character Template 4.1/16x32/16x32 Walk.aseprite"
+dest_files=["res://.godot/imported/16x32 Walk.aseprite-9b318058f5440ce335e60bcf4d497b94.res"]
+
+[params]
+
+layer/exclude_layers_pattern=""
+layer/only_visible_layers=false
+layer/split_layers=false
+first_frame_only=true
+sheet/sheet_type="packed"
+sheet/sheet_columns=4
+sheet/scale=1

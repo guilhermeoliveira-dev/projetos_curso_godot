@@ -1,0 +1,15 @@
+
+
+# Sprites:
+
+Personagens:
+https://erisesra.itch.io/character-templates-pack
+
+Tilesets:
+https://ventilatore.itch.io/the-fantasy-tileset
+
+
+# Shaders:
+
+Círculo mágico:
+https://godotshaders.com/shader/procedural-magic-circle/

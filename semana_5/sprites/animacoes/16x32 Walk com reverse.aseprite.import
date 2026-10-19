@@ -1,0 +1,21 @@
+[remap]
+
+importer="aseprite_wizard.plugin.static-texture"
+type="PortableCompressedTexture2D"
+uid="uid://crjaqle1vhwc0"
+path="res://.godot/imported/16x32 Walk com reverse.aseprite-ee23884b617238617510e30657bd19f0.res"
+
+[deps]
+
+source_file="res://sprites/animacoes/16x32 Walk com reverse.aseprite"
+dest_files=["res://.godot/imported/16x32 Walk com reverse.aseprite-ee23884b617238617510e30657bd19f0.res"]
+
+[params]
+
+layer/exclude_layers_pattern=""
+layer/only_visible_layers=false
+layer/split_layers=false
+first_frame_only=true
+sheet/sheet_type="columns"
+sheet/sheet_columns=4
+sheet/scale=1
