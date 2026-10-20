@@ -1,0 +1,144 @@
+[gd_scene format=3 uid="uid://0kxkjyoif7v3"]
+
+[ext_resource type="Script" uid="uid://3bjunawvfegl" path="res://player.gd" id="1_vpaq7"]
+[ext_resource type="Texture2D" uid="uid://bnbf5j1yypvpt" path="res://player.png" id="1_ywi3g"]
+[ext_resource type="Texture2D" uid="uid://bjg47xwqa5of8" path="res://obstaculo.png" id="2_vpaq7"]
+[ext_resource type="Texture2D" uid="uid://dseje4tsbvd3x" path="res://bandeira.png" id="4_1kjy4"]
+[ext_resource type="Script" uid="uid://rh6d3hhye2vn" path="res://bandeira.gd" id="4_a7f4d"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1kjy4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a7f4d"]
+size = Vector2(128, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xwbwy"]
+size = Vector2(48, 128)
+
+[node name="CenaGameplay" type="Node2D" unique_id=154977186]
+
+[node name="Player" type="CharacterBody2D" parent="." unique_id=239661338 groups=["player"]]
+unique_name_in_owner = true
+position = Vector2(149, 80)
+script = ExtResource("1_vpaq7")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=543212121]
+texture = ExtResource("1_ywi3g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=2142505382]
+shape = SubResource("CapsuleShape2D_1kjy4")
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=347946563]
+
+[node name="Plataforma" type="StaticBody2D" parent="." unique_id=1714783898]
+position = Vector2(149, 145)
+
+[node name="Sprite2D" type="Sprite2D" parent="Plataforma" unique_id=184295239]
+texture = ExtResource("2_vpaq7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Plataforma" unique_id=2098059926]
+shape = SubResource("RectangleShape2D_a7f4d")
+
+[node name="Plataforma2" type="StaticBody2D" parent="." unique_id=2119740807]
+position = Vector2(277, 175)
+
+[node name="Sprite2D" type="Sprite2D" parent="Plataforma2" unique_id=749279467]
+texture = ExtResource("2_vpaq7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Plataforma2" unique_id=655217239]
+shape = SubResource("RectangleShape2D_a7f4d")
+
+[node name="Plataforma3" type="StaticBody2D" parent="." unique_id=2044786063]
+position = Vector2(462, 177)
+
+[node name="Sprite2D" type="Sprite2D" parent="Plataforma3" unique_id=246704948]
+texture = ExtResource("2_vpaq7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Plataforma3" unique_id=2031348082]
+shape = SubResource("RectangleShape2D_a7f4d")
+
+[node name="Plataforma4" type="StaticBody2D" parent="." unique_id=1245187283]
+position = Vector2(590, 144)
+
+[node name="Sprite2D" type="Sprite2D" parent="Plataforma4" unique_id=617720868]
+texture = ExtResource("2_vpaq7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Plataforma4" unique_id=492691449]
+shape = SubResource("RectangleShape2D_a7f4d")
+
+[node name="Plataforma5" type="StaticBody2D" parent="." unique_id=341823771]
+position = Vector2(808, 109)
+
+[node name="Sprite2D" type="Sprite2D" parent="Plataforma5" unique_id=2062199215]
+texture = ExtResource("2_vpaq7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Plataforma5" unique_id=97414998]
+shape = SubResource("RectangleShape2D_a7f4d")
+
+[node name="Plataforma6" type="StaticBody2D" parent="." unique_id=1343231243]
+position = Vector2(974, 147)
+
+[node name="Sprite2D" type="Sprite2D" parent="Plataforma6" unique_id=1935687807]
+texture = ExtResource("2_vpaq7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Plataforma6" unique_id=1111684416]
+shape = SubResource("RectangleShape2D_a7f4d")
+
+[node name="Bandeira" type="Area2D" parent="." unique_id=1900457116]
+position = Vector2(612, 110)
+script = ExtResource("4_a7f4d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bandeira" unique_id=77823281]
+shape = SubResource("RectangleShape2D_xwbwy")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bandeira" unique_id=308563912]
+texture = ExtResource("4_1kjy4")
+
+[node name="Fundo" type="CanvasLayer" parent="." unique_id=1285857000]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="Fundo" unique_id=148154789]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.264, 0.352, 0.44, 1)
+
+[node name="Fim de Jogo" type="CanvasLayer" parent="." unique_id=321607472]
+unique_name_in_owner = true
+
+[node name="PanelContainer" type="PanelContainer" parent="Fim de Jogo" unique_id=2078454639]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Fim de Jogo/PanelContainer" unique_id=711073809]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Label" type="Label" parent="Fim de Jogo/PanelContainer/MarginContainer" unique_id=1493878656]
+layout_mode = 2
+text = "Você venceu!"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2034761987]
+
+[node name="Pontos" type="Label" parent="CanvasLayer" unique_id=21360356]
+unique_name_in_owner = true
+offset_right = 40.0
+offset_bottom = 23.0
+text = "0"
+
+[connection signal="body_entered" from="Bandeira" to="Bandeira" method="_on_body_entered"]

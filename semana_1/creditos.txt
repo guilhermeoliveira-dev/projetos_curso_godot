@@ -1,0 +1,17 @@
+
+Sprite do jogador:
+
+https://craftpix.net/freebies/free-pixel-art-tiny-hero-sprites/
+
+
+Tutorial de base do projeto:
+
+https://www.youtube.com/watch?v=oED12Mo2018 
+
+(assets do tutorial)
+https://github.com/russs123/Godot-Platformer
+
+
+Sprites do fundo:
+
+https://free-game-assets.itch.io/free-sky-with-clouds-background-pixel-art-set?download
